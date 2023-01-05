@@ -35,4 +35,4 @@ class_health_df = read_csv(FILENAME_HEALTH)
 class_health_encoded_df = read_csv(FILENAME_HEALTH_ENCODED)
 
 class_climate_df = read_csv(FILENAME_CLIMATE, parse_dates=["date"], infer_datetime_format=True, dayfirst=True)
-class_climate_encoded_df = read_csv(FILENAME_CLIMATE_ENCODED, parse_dates=["date"], infer_datetime_format=True, dayfirst=True)
+class_climate_encoded_df = read_csv(FILENAME_CLIMATE_ENCODED)
