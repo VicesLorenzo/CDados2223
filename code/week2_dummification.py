@@ -1,4 +1,4 @@
-from globals import class_climate_encoded_df, class_health_encoded_df
+from globals import class_climate_prepared_df, class_health_prepared_df
 from pandas import DataFrame, concat
 from ds_charts import get_variable_types
 from sklearn.preprocessing import OneHotEncoder
@@ -18,5 +18,5 @@ def dummify(df, vars_to_dummify):
     final_df = concat([df[other_vars], dummy], axis=1)
     return final_df
 
-df = dummify(class_climate_encoded_df, get_variable_types(class_climate_encoded_df)["Symbolic"])
-df = dummify(class_health_encoded_df, get_variable_types(class_health_encoded_df)["Symbolic"])
+df = dummify(class_climate_prepared_df, get_variable_types(class_climate_prepared_df)["Symbolic"])
+df = dummify(class_health_prepared_df, get_variable_types(class_health_prepared_df)["Symbolic"])

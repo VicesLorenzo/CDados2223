@@ -15,11 +15,21 @@ WEEK_5_FOLDER = "week5/"
 WEEK_6_FOLDER = "week6/"
 WEEK_7_FOLDER = "week7/"
 
-FILENAME_HEALTH = HEALTH_DATASET_FOLDER + "classification_health.csv"
-FILENAME_HEALTH_ENCODED = HEALTH_DATASET_FOLDER + "classification_health_encoded.csv"
+CLASSIFICATION_HEALTH_FILENAME = "classification_health"
+CLASSIFICATION_HEALTH_ENCODED_FILENAME = "classification_health_encoded"
+CLASSIFICATION_HEALTH_PREPARED_FILENAME = "classification_health_prepared"
 
-FILENAME_CLIMATE = CLIMATE_DATASET_FOLDER + "classification_climate.csv"
-FILENAME_CLIMATE_ENCODED = CLIMATE_DATASET_FOLDER + "classification_climate_encoded.csv"
+CLASSIFICATION_CLIMATE_FILENAME = "classification_climate"
+CLASSIFICATION_CLIMATE_ENCODED_FILENAME = "classification_climate_encoded"
+CLASSIFICATION_CLIMATE_PREPARED_FILENAME = "classification_climate_prepared"
+
+FILENAME_HEALTH_PATH = HEALTH_DATASET_FOLDER + CLASSIFICATION_HEALTH_FILENAME + ".csv"
+FILENAME_HEALTH_ENCODED_PATH = HEALTH_DATASET_FOLDER + CLASSIFICATION_HEALTH_ENCODED_FILENAME + ".csv"
+FILENAME_HEALTH_PREPARED_PATH = HEALTH_DATASET_FOLDER + CLASSIFICATION_HEALTH_PREPARED_FILENAME + ".csv"
+
+FILENAME_CLIMATE_PATH = CLIMATE_DATASET_FOLDER + CLASSIFICATION_CLIMATE_FILENAME + ".csv"
+FILENAME_CLIMATE_ENCODED_PATH = CLIMATE_DATASET_FOLDER + CLASSIFICATION_CLIMATE_ENCODED_FILENAME + ".csv"
+FILENAME_CLIMATE_PREPARED_PATH = CLIMATE_DATASET_FOLDER + CLASSIFICATION_CLIMATE_PREPARED_FILENAME + ".csv"
 
 def save_dataset(df, dataset_folder, filename):
     df.to_csv(dataset_folder + filename + ".csv", index=False)
@@ -31,8 +41,10 @@ def save_image(image_folder, week_folder, filename, show_flag=False):
         show()
     print(f"Saved image {image_folder + week_folder + filename}.png")
 
-class_health_df = read_csv(FILENAME_HEALTH)
-class_health_encoded_df = read_csv(FILENAME_HEALTH_ENCODED)
+class_health_df = read_csv(FILENAME_HEALTH_PATH)
+class_health_encoded_df = read_csv(FILENAME_HEALTH_ENCODED_PATH)
+class_health_prepared_df = read_csv(FILENAME_HEALTH_PREPARED_PATH)
 
-class_climate_df = read_csv(FILENAME_CLIMATE, parse_dates=["date"], infer_datetime_format=True, dayfirst=True)
-class_climate_encoded_df = read_csv(FILENAME_CLIMATE_ENCODED)
+class_climate_df = read_csv(FILENAME_CLIMATE_PATH, parse_dates=["date"], infer_datetime_format=True, dayfirst=True)
+class_climate_encoded_df = read_csv(FILENAME_CLIMATE_ENCODED_PATH)
+class_climate_prepared_df = read_csv(FILENAME_CLIMATE_PREPARED_PATH)
