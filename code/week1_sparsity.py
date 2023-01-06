@@ -47,17 +47,17 @@ def correlation_analysis(df, image_folder, filename):
 
 matplotlib.use('Agg')
 
-sparsity_numeric(class_climate_df, CLIMATE_IMAGE_FOLDER, "sparsity_numeric")
+#sparsity_numeric(class_climate_df, CLIMATE_IMAGE_FOLDER, "sparsity_numeric")
 sparsity_numeric(class_climate_encoded_df, CLIMATE_IMAGE_FOLDER, "sparsity_numeric_encoded")
-sparsity_numeric(class_health_df, HEALTH_IMAGE_FOLDER, "sparsity_numeric")
+#sparsity_numeric(class_health_df, HEALTH_IMAGE_FOLDER, "sparsity_numeric")
 sparsity_numeric(class_health_encoded_df, HEALTH_IMAGE_FOLDER, "sparsity_numeric_encoded")
 
-sparsity_symbolic(class_climate_df, CLIMATE_IMAGE_FOLDER, "sparsity_symbolic")
+#sparsity_symbolic(class_climate_df, CLIMATE_IMAGE_FOLDER, "sparsity_symbolic")
 sparsity_symbolic(class_climate_encoded_df, CLIMATE_IMAGE_FOLDER, "sparsity_symbolic_encoded")
-sparsity_symbolic(class_health_df, HEALTH_IMAGE_FOLDER, "sparsity_symbolic")
+#sparsity_symbolic(class_health_df, HEALTH_IMAGE_FOLDER, "sparsity_symbolic")
 sparsity_symbolic(class_health_encoded_df, HEALTH_IMAGE_FOLDER, "sparsity_symbolic_encoded")
 
-correlation_analysis(class_climate_df, CLIMATE_IMAGE_FOLDER, "correlation_analysis")
+#correlation_analysis(class_climate_df, CLIMATE_IMAGE_FOLDER, "correlation_analysis")
 correlation_analysis(class_climate_encoded_df, CLIMATE_IMAGE_FOLDER, "correlation_analysis_encoded")
-correlation_analysis(class_health_df, HEALTH_IMAGE_FOLDER, "correlation_analysis")
+#correlation_analysis(class_health_df, HEALTH_IMAGE_FOLDER, "correlation_analysis")
 correlation_analysis(class_health_encoded_df, HEALTH_IMAGE_FOLDER, "correlation_analysis_encoded")
