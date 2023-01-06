@@ -14,7 +14,10 @@ def encode_category(df, column_name, missing_value=None):
 
 # encoding climate dataset
 class_climate_df.columns = class_climate_df.columns.str.lower()
-class_climate_df["date"] = class_climate_df["date"].values.astype(np.int64) // 10 ** 9
+class_climate_df.insert(loc=1, column="day", value=class_climate_df["date"].dt.day)
+class_climate_df.insert(loc=2, column="month", value=class_climate_df["date"].dt.month)
+class_climate_df.insert(loc=3, column="year", value=class_climate_df["date"].dt.year)
+class_climate_df.drop(columns="date", inplace=True)
 save_dataset(class_climate_df, CLIMATE_DATASET_FOLDER, "classification_climate_encoded")
 
 # encoding health dataset

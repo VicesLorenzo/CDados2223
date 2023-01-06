@@ -28,11 +28,9 @@ CLASSIFICATION_CLIMATE_PREPARED_FILENAME = "classification_climate_prepared"
 
 FILENAME_HEALTH_PATH = HEALTH_DATASET_FOLDER + CLASSIFICATION_HEALTH_FILENAME + ".csv"
 FILENAME_HEALTH_ENCODED_PATH = HEALTH_DATASET_FOLDER + CLASSIFICATION_HEALTH_ENCODED_FILENAME + ".csv"
-FILENAME_HEALTH_PREPARED_PATH = HEALTH_DATASET_FOLDER + CLASSIFICATION_HEALTH_PREPARED_FILENAME + ".csv"
 
 FILENAME_CLIMATE_PATH = CLIMATE_DATASET_FOLDER + CLASSIFICATION_CLIMATE_FILENAME + ".csv"
 FILENAME_CLIMATE_ENCODED_PATH = CLIMATE_DATASET_FOLDER + CLASSIFICATION_CLIMATE_ENCODED_FILENAME + ".csv"
-FILENAME_CLIMATE_PREPARED_PATH = CLIMATE_DATASET_FOLDER + CLASSIFICATION_CLIMATE_PREPARED_FILENAME + ".csv"
 
 def save_dataset(df, dataset_folder, filename):
     df.to_csv(dataset_folder + filename + ".csv", index=False)
@@ -46,8 +44,6 @@ def save_image(image_folder, week_folder, filename, show_flag=False):
 
 class_health_df = read_csv(FILENAME_HEALTH_PATH)
 class_health_encoded_df = read_csv(FILENAME_HEALTH_ENCODED_PATH)
-class_health_prepared_df = read_csv(FILENAME_HEALTH_PREPARED_PATH)
 
 class_climate_df = read_csv(FILENAME_CLIMATE_PATH, parse_dates=["date"], infer_datetime_format=True, dayfirst=True)
 class_climate_encoded_df = read_csv(FILENAME_CLIMATE_ENCODED_PATH)
-class_climate_prepared_df = read_csv(FILENAME_CLIMATE_PREPARED_PATH)
