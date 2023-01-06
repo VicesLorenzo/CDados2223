@@ -15,6 +15,9 @@ WEEK_5_FOLDER = "week5/"
 WEEK_6_FOLDER = "week6/"
 WEEK_7_FOLDER = "week7/"
 
+CLASSIFICATION_HEALTH_TARGET = "readmitted"
+CLASSIFICATION_CLIMATE_TARGET = "class"
+
 CLASSIFICATION_HEALTH_FILENAME = "classification_health"
 CLASSIFICATION_HEALTH_ENCODED_FILENAME = "classification_health_encoded"
 CLASSIFICATION_HEALTH_PREPARED_FILENAME = "classification_health_prepared"
