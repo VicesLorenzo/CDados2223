@@ -1,6 +1,7 @@
 import numpy as np
 from globals import class_climate_df, class_health_df
 from globals import save_dataset, CLIMATE_DATASET_FOLDER, HEALTH_DATASET_FOLDER
+from globals import CLASSIFICATION_HEALTH_ENCODED_FILENAME, CLASSIFICATION_CLIMATE_ENCODED_FILENAME
 
 MISSING_VALUE = np.nan
 
@@ -18,7 +19,7 @@ class_climate_df.insert(loc=1, column="day", value=class_climate_df["date"].dt.d
 class_climate_df.insert(loc=2, column="month", value=class_climate_df["date"].dt.month)
 class_climate_df.insert(loc=3, column="year", value=class_climate_df["date"].dt.year)
 class_climate_df.drop(columns="date", inplace=True)
-save_dataset(class_climate_df, CLIMATE_DATASET_FOLDER, "classification_climate_encoded")
+save_dataset(class_climate_df, CLIMATE_DATASET_FOLDER, CLASSIFICATION_CLIMATE_ENCODED_FILENAME)
 
 # encoding health dataset
 class_health_df.columns = class_health_df.columns.str.lower()
@@ -37,4 +38,4 @@ class_health_df["readmitted"] = class_health_df["readmitted"].replace(["NO", "<3
 class_health_df = encode_category(class_health_df, "diag_1", missing_value="?")
 class_health_df = encode_category(class_health_df, "diag_2", missing_value="?")
 class_health_df = encode_category(class_health_df, "diag_3", missing_value="?")
-save_dataset(class_health_df, HEALTH_DATASET_FOLDER, "classification_health_encoded")
+save_dataset(class_health_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_ENCODED_FILENAME)
