@@ -20,6 +20,7 @@ def nb_study(df, target_class, image_folder, filename):
     labels = unique(y)
     labels.sort()
     trnX, tstX, trnY, tstY = train_test_split(X, y, train_size=0.7, stratify=y)
+    labels = labels.flatten()
     if len(labels) > 2:
         clf = MultinomialNB()
     else:
