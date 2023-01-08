@@ -134,10 +134,10 @@ histogram_numeric_trend(class_health_df, HEALTH_IMAGE_FOLDER, "histogram_numeric
 histogram_numeric_trend(class_health_encoded_df, HEALTH_IMAGE_FOLDER, "histogram_numeric_trend_encoded")
 
 #todo
-histogram_numeric_distribution(class_climate_df, CLIMATE_IMAGE_FOLDER, "histogram_numeric_distribution")
-histogram_numeric_distribution(class_climate_encoded_df, CLIMATE_IMAGE_FOLDER, "histogram_numeric_distribution_encoded")
-histogram_numeric_distribution(class_health_df, HEALTH_IMAGE_FOLDER, "histogram_numeric_distribution")
-histogram_numeric_distribution(class_health_encoded_df, HEALTH_IMAGE_FOLDER, "histogram_numeric_distribution_encoded")
+#histogram_numeric_distribution(class_climate_df, CLIMATE_IMAGE_FOLDER, "histogram_numeric_distribution")
+#histogram_numeric_distribution(class_climate_encoded_df, CLIMATE_IMAGE_FOLDER, "histogram_numeric_distribution_encoded")
+#histogram_numeric_distribution(class_health_df, HEALTH_IMAGE_FOLDER, "histogram_numeric_distribution")
+#histogram_numeric_distribution(class_health_encoded_df, HEALTH_IMAGE_FOLDER, "histogram_numeric_distribution_encoded")
 
 histogram_symbolic(class_climate_df, CLIMATE_IMAGE_FOLDER, "histogram_symbolic")
 histogram_symbolic(class_climate_encoded_df, CLIMATE_IMAGE_FOLDER, "histogram_symbolic_encoded")

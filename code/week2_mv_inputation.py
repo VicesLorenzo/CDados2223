@@ -56,15 +56,16 @@ def value_imputation_most_frequent(data):
     return df
 
 dropped_df = drop_columns(missing_values(class_health_encoded_df), class_health_encoded_df)
-mean_df = value_imputation_mean(dropped_df)
-nb_study(mean_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_nb_study_mean")
-knn_study(mean_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_knn_study_mean")
+climate_mean_df = value_imputation_mean(dropped_df)
+#nb_study(climate_mean_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_nb_study_mean")
+#knn_study(climate_mean_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_knn_study_mean")
 
-most_frequent_df = value_imputation_most_frequent(dropped_df)
-nb_study(most_frequent_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_nb_study_most_frequent")
-knn_study(most_frequent_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_knn_study_most_frequent")
+climate_most_frequent_df = value_imputation_most_frequent(dropped_df)
+#nb_study(climate_most_frequent_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_nb_study_most_frequent")
+#knn_study(climate_most_frequent_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "missing_values_imputation_knn_study_most_frequent")
 
 # os resultados de ambas as alternativas foram muito semelhantes, mas o mean deu melhor resultado na naive bayes, logo optamos pelo mean
+save_dataset(climate_mean_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_PREPARED_FILENAME)
 
-save_dataset(mean_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_PREPARED_FILENAME)
+# o dataset climate nao tem missing values logo fica como está
 save_dataset(class_climate_encoded_df, CLIMATE_DATASET_FOLDER, CLASSIFICATION_CLIMATE_PREPARED_FILENAME)

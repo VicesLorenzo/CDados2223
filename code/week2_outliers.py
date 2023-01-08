@@ -56,25 +56,24 @@ def outliers_treatment_truncate(org_df):
         new_df[var] = new_df[var].apply(lambda x: top_threshold if x > top_threshold else bottom_threshold if x < bottom_threshold else x)
     return new_df
 
-median_df = outliers_treatment_median(class_climate_prepared_df)
-nb_study(median_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_nb_study_median")
-knn_study(median_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_knn_study_median")
+climate_median_df = outliers_treatment_median(class_climate_prepared_df)
+#nb_study(climate_median_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_nb_study_median")
+#knn_study(climate_median_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_knn_study_median")
 
-truncate_df = outliers_treatment_median(class_climate_prepared_df)
-nb_study(truncate_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_nb_study_truncate")
-knn_study(truncate_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_knn_study_truncate")
+climate_truncate_df = outliers_treatment_median(class_climate_prepared_df)
+#nb_study(climate_truncate_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_nb_study_truncate")
+#knn_study(climate_truncate_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "outliers_treatment_knn_study_truncate")
 
 # para o dataset climate os resultados foram muito semelhantes, mas o truncate foi ligeiramente melhor
-save_dataset(truncate_df, CLIMATE_DATASET_FOLDER, CLASSIFICATION_CLIMATE_PREPARED_FILENAME)
+save_dataset(climate_truncate_df, CLIMATE_DATASET_FOLDER, CLASSIFICATION_CLIMATE_PREPARED_FILENAME)
 
-median_df = outliers_treatment_median(class_health_prepared_df)
-nb_study(median_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_nb_study_median")
-knn_study(median_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_knn_study_median")
+health_median_df = outliers_treatment_median(class_health_prepared_df)
+#nb_study(health_median_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_nb_study_median")
+#knn_study(health_median_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_knn_study_median")
 
-truncate_df = outliers_treatment_median(class_health_prepared_df)
-nb_study(truncate_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_nb_study_truncate")
-knn_study(truncate_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_knn_study_truncate")
+health_truncate_df = outliers_treatment_median(class_health_prepared_df)
+#nb_study(health_truncate_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_nb_study_truncate")
+#knn_study(health_truncate_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "outliers_treatment_knn_study_truncate")
 
 # para o dataset health os resultados foram muito semelhantes, mas o truncate é o que nos faz mais sentido
-
-save_dataset(truncate_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_PREPARED_FILENAME)
+save_dataset(health_truncate_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_PREPARED_FILENAME)

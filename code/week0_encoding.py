@@ -38,4 +38,5 @@ class_health_df["readmitted"] = class_health_df["readmitted"].replace(["NO", "<3
 class_health_df = encode_category(class_health_df, "diag_1", missing_value="?")
 class_health_df = encode_category(class_health_df, "diag_2", missing_value="?")
 class_health_df = encode_category(class_health_df, "diag_3", missing_value="?")
+class_health_df.drop(columns=["encounter_id", "patient_nbr", "admission_type_id", "discharge_disposition_id", "admission_source_id"], inplace=True)
 save_dataset(class_health_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_ENCODED_FILENAME)
