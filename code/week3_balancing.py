@@ -3,8 +3,11 @@ from globals import CLASSIFICATION_HEALTH_TARGET, CLASSIFICATION_CLIMATE_TARGET
 from globals import save_image, WEEK_3_FOLDER, HEALTH_IMAGE_FOLDER, CLIMATE_IMAGE_FOLDER
 from matplotlib.pyplot import figure
 from ds_charts import bar_chart
-from pandas import DataFrame, concat
+from pandas import DataFrame, concat, Series
+from imblearn.over_sampling import SMOTE
 import numpy as np
+
+RANDOM_STATE = 42
 
 def class_balance(df, class_var, image_folder, filename):
     target_count = df[class_var].value_counts().sort_index()
@@ -64,6 +67,15 @@ def ternary_oversampling(original, class_var):
     df_over = concat([df_pos_sample, df_negatives, df_remain_sample], axis=0)
     return df_over
 
+def smote(original, class_var):
+    smote = SMOTE(sampling_strategy='minority', random_state=RANDOM_STATE)
+    y = original.pop(class_var).values
+    X = original.values
+    smote_X, smote_y = smote.fit_resample(X, y)
+    df_smote = concat([DataFrame(smote_X), DataFrame(smote_y)], axis=1)
+    df_smote.columns = list(original.columns) + [class_var]
+    return df_smote
+
 class_balance(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train")
 class_balance(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_train")
 
@@ -78,3 +90,9 @@ health_under_df = ternary_undersampling(class_health_prepared_train_df, CLASSIFI
 class_balance(health_under_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_under")
 health_over_df = ternary_oversampling(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
 class_balance(health_over_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_over")
+
+climate_smote_df = smote(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET)
+class_balance(climate_smote_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_train_smote")
+health_smote_df = smote(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
+class_balance(health_smote_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_smote")
+
