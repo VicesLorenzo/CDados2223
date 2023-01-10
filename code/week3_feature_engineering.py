@@ -51,7 +51,7 @@ def select_low_variance(data: DataFrame, threshold: float, image_folder, filenam
     lst_variances = []
     for el in data.columns:
         value = data[el].var()
-        if value >= threshold:
+        if value <= threshold:
             lst_variables.append(el)
             lst_variances.append(value)
     figure(figsize=[20, 10])
