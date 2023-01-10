@@ -6,6 +6,7 @@ from ds_charts import bar_chart
 from pandas import DataFrame, concat, Series
 from imblearn.over_sampling import SMOTE
 import numpy as np
+from week2_study import nb_study, knn_study
 
 RANDOM_STATE = 42
 
@@ -81,18 +82,48 @@ class_balance(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET, CL
 
 # Como no dataset climate o class balance está fixe, nao vamos fazer balancing desse dataset
 
+nb_study(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_nb_train")
+knn_study(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_knn_train")
+nb_study(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_nb_train")
+knn_study(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_knn_train")
+
+
 climate_under_df = binary_undersampling(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET)
 class_balance(climate_under_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_train_under")
+
+nb_study(climate_under_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_nb_under_train")
+knn_study(climate_under_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_knn_under_train")
+
+
 climate_over_df = binary_oversampling(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET)
 class_balance(climate_over_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_train_over")
 
-health_under_df = ternary_undersampling(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
-class_balance(health_under_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_under")
-health_over_df = ternary_oversampling(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
-class_balance(health_over_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_over")
+nb_study(climate_over_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_nb_over_train")
+knn_study(climate_over_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_knn_over_train")
 
 climate_smote_df = smote(class_climate_prepared_train_df, CLASSIFICATION_CLIMATE_TARGET)
 class_balance(climate_smote_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_train_smote")
+
+nb_study(climate_smote_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_nb_smote_train")
+knn_study(climate_smote_df, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "class_balance_knn_smote_train")
+
+
+
+
+health_under_df = ternary_undersampling(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
+class_balance(health_under_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_under")
+
+nb_study(health_under_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_nb_under_train")
+knn_study(health_under_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_knn_under_train")
+
+health_over_df = ternary_oversampling(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
+class_balance(health_over_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_over")
+
+nb_study(health_over_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_nb_over_train")
+knn_study(health_over_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_knn_over_train")
+
 health_smote_df = smote(class_health_prepared_train_df, CLASSIFICATION_HEALTH_TARGET)
 class_balance(health_smote_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_train_smote")
 
+nb_study(health_smote_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_nb_smote_train")
+knn_study(health_smote_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "class_balance_knn_smote_train")
