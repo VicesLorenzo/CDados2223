@@ -78,16 +78,15 @@ climate_dropped_df = drop_redundant(class_climate_prepared_df, climate_redundant
 climate_variance_2drop = select_low_variance(climate_dropped_df[get_variable_types(climate_dropped_df)['Numeric']], VARIANCE_THRESHOLD, CLIMATE_IMAGE_FOLDER, "variance_study_encoded")
 climate_dropped_variance = drop_low_variance(climate_dropped_df, climate_variance_2drop)
 
-nb_study(climate_dropped_variance, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "dropped_variance_feature_engineering_nb_study")
-knn_study(climate_dropped_variance, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "dropped_variance_engineering_knn_study")
+#nb_study(climate_dropped_variance, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "dropped_variance_feature_engineering_nb_study")
+#knn_study(climate_dropped_variance, CLASSIFICATION_CLIMATE_TARGET, CLIMATE_IMAGE_FOLDER, "dropped_variance_engineering_knn_study")
 
 
 # No dataset climate dropamos as colunas com correlacao maior que 0.9 e nao dropamos por variance pq iriamos perder muitas colunas
-#save_dataset(climate_dropped_df, CLIMATE_DATASET_FOLDER, CLASSIFICATION_CLIMATE_PREPARED_FILENAME)
+save_dataset(climate_dropped_df, CLIMATE_DATASET_FOLDER, CLASSIFICATION_CLIMATE_PREPARED_FILENAME)
 
 #nb_study(class_health_prepared_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "simple_feature_engineering_nb_study")
 #knn_study(class_health_prepared_df, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "simple_feature_engineering_knn_study")
-
 
 health_reduntant_2drop, health_corr_mtx = select_redundant(class_health_prepared_df.corr(), CORRELATION_THRESHOLD)
 plot_heatmap(health_corr_mtx, HEALTH_IMAGE_FOLDER, "correlation_study_encoded")
@@ -105,4 +104,4 @@ health_dropped_variance = drop_low_variance(health_dropped_df, health_variance_2
 #knn_study(health_dropped_variance, CLASSIFICATION_HEALTH_TARGET, HEALTH_IMAGE_FOLDER, "dropped_variance_engineering_knn_study")
 
 # No dataset health não tem correlation entre variáveis portanto não dropamos nenhuma e nao dropamos por variance pq iriamos perder muitas colunas
-#save_dataset(class_health_prepared_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_PREPARED_FILENAME)
+save_dataset(class_health_prepared_df, HEALTH_DATASET_FOLDER, CLASSIFICATION_HEALTH_PREPARED_FILENAME)
